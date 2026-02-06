@@ -22,7 +22,6 @@ def ajouter_apprenant():
     connexion.commit()
     print('Apprenant ajouté avec succès')
 
-ajouter_apprenant()
 
 def afficher_apprenants():
     curseur.execute("SELECT * FROM apprenants WHERE presence = 'present'")
@@ -31,7 +30,6 @@ def afficher_apprenants():
         print('\Liste des apprenants pointés')
         for apprenants in resultats:
             print(apprenants)
-afficher_apprenants()
 
 def rechercher_apprenant():
     recherche = input("Saisir l'ID de l'apprenant: ")
@@ -44,6 +42,27 @@ def rechercher_apprenant():
         print("Aprenant trouvé: ")
         for apprenant in resultats:
             print(apprenant)
-rechercher_apprenant()
+
+#menu interactif
+while True:
+    print("=== MENU POINTAGE ===")
+    print("1. Ajouter apprenant")
+    print("2. Afficher les apprenants")
+    print("3. Rechercher un apprenant")
+    print("4. Quitter")
+    choix = input("Choisissez une option: ")
+    if choix == "1":
+        ajouter_apprenant()
+    elif choix == "2":
+        afficher_apprenants()
+    elif choix == "3":
+        rechercher_apprenant()
+    elif choix == "4":
+        print('AU revoir')
+        break
+    else:
+        print("Choix invalide")
+
+#fermeture de la connexion
 curseur.close()
 connexion.close()
